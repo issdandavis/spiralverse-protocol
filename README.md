@@ -141,12 +141,63 @@ Coordinate hundreds of autonomous robots for:
 - [ ] Commercial licensing
 - [ ] Patent applications
 
+## 🤖 Fleet Management & Polly Pads
+
+The Spiralverse Protocol now includes a complete **AI Fleet Management System** with **Polly Pads** - personal workspaces for AI agents.
+
+### Polly Pads: Agent Workspaces
+
+Each AI agent gets their own "Kindle pad" - a persistent, auditable workspace:
+
+```typescript
+import { FleetManager } from './src/fleet';
+
+const fleet = new FleetManager({
+  enablePollyPads: true,
+  defaultSwarmId: 'main-swarm'
+});
+
+// Register an agent - Polly Pad auto-created
+const agent = fleet.registerAgent({
+  name: 'Navigator-Bot',
+  capabilities: ['orchestration', 'monitoring'],
+  maxGovernanceTier: 'CA'
+});
+
+// Agent's pad grows over time
+fleet.addPadNote(agent.id, 'Mission Log', 'Completed orbital insertion', ['mission']);
+fleet.addPadSketch(agent.id, 'Trajectory', svgData, 'diagram');
+fleet.addPadTool(agent.id, 'DebrisScanner', 'Orbital debris detection', 'script', code);
+```
+
+### Dimensional Flux States
+
+Agents participate in swarms with dimensional flux (ν):
+
+| ν Value | State | Behavior |
+|---------|-------|----------|
+| ν ≥ 0.8 | **POLLY** | Full swarm participation |
+| 0.5 ≤ ν < 0.8 | **QUASI** | Partial sync, limited tools |
+| 0.1 ≤ ν < 0.5 | **DEMI** | Minimal, read-only |
+| ν < 0.1 | **COLLAPSED** | Offline, archived |
+
+### Governance as School
+
+Sacred Tongue tiers work like grade levels:
+- **KO** (Kindergarten) → Basic tasks, high supervision
+- **AV** (Elementary) → I/O tasks, moderate supervision
+- **RU** (Middle School) → Policy-aware, some autonomy
+- **CA** (High School) → Logic tasks, trusted
+- **UM** (University) → Security tasks, high trust
+- **DR** (Doctorate) → Architectural decisions, full autonomy
+
 ## 📚 Documentation
 
 - [Technical Specification](./docs/TECHNICAL_SPEC.md)
 - [API Reference](./docs/API.md)
 - [Integration Guide](./docs/INTEGRATION.md)
 - [Security Model](./docs/SECURITY.md)
+- [Fleet Management](./src/fleet/)
 
 ## 🤝 Contributing
 
